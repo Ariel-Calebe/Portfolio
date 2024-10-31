@@ -1,0 +1,39 @@
+var i = 0;
+var txt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+var speed = 35;
+var lineCount = 0;
+
+function writer() {
+  if (i < txt.length) {
+    document.getElementById("content").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(writer, speed);
+    checkOverflow(); // Verifica se o texto excedeu o limite
+  }
+}
+
+function checkOverflow() {
+  const content = document.getElementById('content');
+  const terminal = document.getElementById('terminal');
+
+  // Verifica se o conteúdo está excedendo a largura do terminal
+  if (content.offsetWidth > terminal.clientWidth) {
+    moveText();
+  }
+}
+
+function moveText() {
+  const content = document.getElementById('content');
+  lineCount++;
+
+  // Move o texto para baixo
+  content.style.transform = `translateY(${lineCount * 1.2}em)`;
+
+  // Resetar a posição se exceder um certo limite
+  if (lineCount > 10) { // Limite de linhas
+    lineCount = 0;
+    content.style.transform = 'translateY(0)';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', writer);

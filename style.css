@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#backScreen {
+    position: relative;
+    background-color: #174717;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#backScreen img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#terminal {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 80%;
+    z-index: 1;
+    background-color: transparent;
+}
+
+#content {
+    white-space: pre !important;
+    flex-grow: 1;
+    overflow-y: auto;
+    font-family: "VT323", monospace;
+    color: greenyellow;
+    font-size: 4vh; /* Ajuste o tamanho do texto baseado na altura da viewport */
+    text-shadow: 1px 1px 2px greenyellow, 0 0 1em blue, 0 0 0.2em blue;
+    white-space: pre-wrap;
+    text-align: left;
+    padding: 10px;
+    z-index: 0;
+}
+
+#content::-webkit-scrollbar {
+    display: none;
+}
+
+.input-box {
+    font-family: "VT323", monospace;
+    font-size: 4vh; /* Ajuste o tamanho do texto baseado na altura da viewport */
+    color: greenyellow;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    z-index: 2;
+    text-shadow: 1px 1px 2px greenyellow, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+#darkModeButton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-family: "VT323", monospace;
+    font-size: 3vh;
+    color: greenyellow;
+    background-color: #333;
+    border: 1px solid greenyellow;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#darkModeButton:hover {
+    background-color: green;
+    color: black;
+}
+
+/* Estilos do Dark Mode */
+.dark-mode {
+    background-color: black;
+}
+
+.dark-mode #backScreen {
+    background-color: black;
+}
+
+.dark-mode #backScreen img {
+    display: none; /* Esconde as imagens no modo escuro */
+}
+
+/* Layout responsivo para telas pequenas (como celulares) */
+@media (max-width: 768px) {
+    #backScreen {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #terminal {
+        width: 90%;
+        height: 60%;
+        font-size: 2.5vh; /* Ajusta o tamanho da fonte */
+    }
+
+    .input-box {
+        font-size: 2.5vh; /* Ajusta o tamanho da fonte no input */
+    }
+
+    #darkModeButton {
+        font-size: 2.5vh; /* Ajusta o botão para tamanhos menores */
+        margin-top: 5px;
+    }
+}
