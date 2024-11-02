@@ -775,7 +775,9 @@ function checkOrientation() {
 
     if (window.innerWidth < window.innerHeight) {
         // Modo retrato: exibe a mensagem de orientação no terminal e oculta o restante
-        content.innerText = "Por favor, rotacione o dispositivo para o modo paisagem para visualizar corretamente.";
+        content.innerText = "Por favor, rotacione o dispositivo", 
+        "para o modo paisagem para", 
+        "visualizar corretamente.";
         content.style.display = "flex";
         content.style.alignItems = "center";
         content.style.justifyContent = "center";
